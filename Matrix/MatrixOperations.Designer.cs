@@ -67,8 +67,10 @@
             // 
             dgvMatrix.AllowUserToAddRows = false;
             dgvMatrix.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMatrix.ColumnHeadersVisible = false;
             dgvMatrix.Location = new Point(14, 47);
             dgvMatrix.Name = "dgvMatrix";
+            dgvMatrix.RowHeadersVisible = false;
             dgvMatrix.RowTemplate.Height = 25;
             dgvMatrix.Size = new Size(498, 178);
             dgvMatrix.TabIndex = 0;
@@ -77,6 +79,7 @@
             // 
             resultTextBox.Location = new Point(656, 303);
             resultTextBox.Name = "resultTextBox";
+            resultTextBox.ReadOnly = true;
             resultTextBox.Size = new Size(121, 23);
             resultTextBox.TabIndex = 2;
             // 
@@ -178,7 +181,7 @@
             btnInitialize.Name = "btnInitialize";
             btnInitialize.Size = new Size(89, 23);
             btnInitialize.TabIndex = 13;
-            btnInitialize.Text = "Ініціалізація";
+            btnInitialize.Text = "Initialization";
             btnInitialize.UseVisualStyleBackColor = true;
             btnInitialize.Click += btnInitialize_Click;
             // 
@@ -188,7 +191,7 @@
             btnInitialize2.Name = "btnInitialize2";
             btnInitialize2.Size = new Size(89, 23);
             btnInitialize2.TabIndex = 19;
-            btnInitialize2.Text = "Ініціалізація";
+            btnInitialize2.Text = "Initialization";
             btnInitialize2.UseVisualStyleBackColor = true;
             btnInitialize2.Click += btnInitialize_Click;
             // 
@@ -228,8 +231,10 @@
             // 
             dgvMatrix2.AllowUserToAddRows = false;
             dgvMatrix2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMatrix2.ColumnHeadersVisible = false;
             dgvMatrix2.Location = new Point(14, 273);
             dgvMatrix2.Name = "dgvMatrix2";
+            dgvMatrix2.RowHeadersVisible = false;
             dgvMatrix2.RowTemplate.Height = 25;
             dgvMatrix2.Size = new Size(498, 178);
             dgvMatrix2.TabIndex = 14;
@@ -238,8 +243,10 @@
             // 
             dgvMatrixResult.AllowUserToAddRows = false;
             dgvMatrixResult.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMatrixResult.ColumnHeadersVisible = false;
             dgvMatrixResult.Location = new Point(656, 47);
             dgvMatrixResult.Name = "dgvMatrixResult";
+            dgvMatrixResult.RowHeadersVisible = false;
             dgvMatrixResult.RowTemplate.Height = 25;
             dgvMatrixResult.Size = new Size(498, 178);
             dgvMatrixResult.TabIndex = 20;
@@ -264,7 +271,7 @@
             // comboBox
             // 
             comboBox.FormattingEnabled = true;
-            comboBox.Items.AddRange(new object[] { "Матриця 1", "Матриця 2" });
+            comboBox.Items.AddRange(new object[] { "Matrix 1", "Matrix 2" });
             comboBox.Location = new Point(656, 246);
             comboBox.Name = "comboBox";
             comboBox.Size = new Size(121, 23);
@@ -319,7 +326,7 @@
             Controls.Add(resultTextBox);
             Controls.Add(dgvMatrix);
             Name = "MatrixOperationsForm";
-            Text = "Form1";
+            Text = "Matrix Operations";
             ((System.ComponentModel.ISupportInitialize)dgvMatrix).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudRows).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudColumns).EndInit();

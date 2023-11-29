@@ -24,13 +24,13 @@ namespace MatrixOperations
 
                     if (string.IsNullOrEmpty(cellValue))
                     {
-                        MessageBox.Show($"Введіть значення для комірки ({i + 1}, {j + 1}).");
+                        MessageBox.Show($"Enter a value for the cell ({i + 1}, {j + 1}).");
                         return null;
                     }
 
                     if (!double.TryParse(cellValue, out matrix[i, j]))
                     {
-                        MessageBox.Show($"Введіть коректне число для комірки ({i + 1}, {j + 1}).");
+                        MessageBox.Show($"Enter the correct number for the cell ({i + 1}, {j + 1}).");
                         return null;
                     }
                 }
@@ -49,7 +49,7 @@ namespace MatrixOperations
 
                 if (rows != matrix2.GetLength(0) || cols != matrix2.GetLength(1))
                 {
-                    MessageBox.Show("Матриці повинні мати однакові розміри для додавання.");
+                    MessageBox.Show("Matrices must have the same dimensions for addition.");
                     return;
                 }
 
@@ -77,7 +77,7 @@ namespace MatrixOperations
 
                 if (rows != matrix2.GetLength(0) || cols != matrix2.GetLength(1))
                 {
-                    MessageBox.Show("Матриці повинні мати однакові розміри для віднімання.");
+                    MessageBox.Show("Matrices must have the same dimensions for subtraction.");
                     return;
                 }
 
@@ -133,33 +133,34 @@ namespace MatrixOperations
         {
             double[,] matrix1 = ReadMatrixFromDataGridView(dgvMatrix);
             double[,] matrix2 = ReadMatrixFromDataGridView(dgvMatrix2);
-            if (matrix1 != null && matrix2 != null) { 
-            int rows1 = matrix1.GetLength(0);
-            int cols1 = matrix1.GetLength(1);
-            int rows2 = matrix2.GetLength(0);
-            int cols2 = matrix2.GetLength(1);
-
-            if (cols1 != rows2)
+            if (matrix1 != null && matrix2 != null)
             {
-                MessageBox.Show("Кількість стовпців першої матриці не дорівнює кількості рядків другої матриці.");
-                return;
-            }
-            double[,] result = new double[rows1, cols2];
+                int rows1 = matrix1.GetLength(0);
+                int cols1 = matrix1.GetLength(1);
+                int rows2 = matrix2.GetLength(0);
+                int cols2 = matrix2.GetLength(1);
 
-            for (int i = 0; i < rows1; i++)
-            {
-                for (int j = 0; j < cols2; j++)
+                if (cols1 != rows2)
                 {
-                    double sum = 0;
-                    for (int k = 0; k < cols1; k++)
-                    {
-                        sum += matrix1[i, k] * matrix2[k, j];
-                    }
-                    result[i, j] = sum;
+                    MessageBox.Show("The number of columns of the first matrix is not equal to the number of rows of the second matrix.");
+                    return;
                 }
+                double[,] result = new double[rows1, cols2];
+
+                for (int i = 0; i < rows1; i++)
+                {
+                    for (int j = 0; j < cols2; j++)
+                    {
+                        double sum = 0;
+                        for (int k = 0; k < cols1; k++)
+                        {
+                            sum += matrix1[i, k] * matrix2[k, j];
+                        }
+                        result[i, j] = sum;
+                    }
+                }
+                DisplayResult(result);
             }
-            DisplayResult(result);
-        }
         }
 
         private void determinantButton_Click(object sender, EventArgs e)
@@ -191,7 +192,7 @@ namespace MatrixOperations
 
             if (rows != cols)
             {
-                MessageBox.Show("Для обчислення визначника матриця має бути квадратною.");
+                MessageBox.Show("To calculate the determinant, the matrix must be square.");
                 return 0;
             }
 
@@ -277,7 +278,7 @@ namespace MatrixOperations
 
             if (rows != cols)
             {
-                MessageBox.Show("Матриця має бути квадратною, щоб обчислити її зворотну матрицю.");
+                MessageBox.Show("A matrix must be square in order to calculate its inverse.");
                 return null;
             }
 
@@ -285,7 +286,7 @@ namespace MatrixOperations
 
             if (determinant == 0)
             {
-                MessageBox.Show("Матриця є сингулярною, і її оберненої не існує.");
+                MessageBox.Show("The matrix is singular, and its inverse does not exist.");
                 return null;
             }
 
@@ -318,7 +319,7 @@ namespace MatrixOperations
                     DataGridViewRow row = new DataGridViewRow();
                     for (int j = 0; j < cols; j++)
                     {
-                        dgvMatrixResult.Columns[j].Width = 25;
+                        dgvMatrixResult.Columns[j].Width = 40;
                         row.Cells.Add(new DataGridViewTextBoxCell { Value = result[i, j] });
                     }
                     dgvMatrixResult.Rows.Add(row);
@@ -361,7 +362,7 @@ namespace MatrixOperations
                         dgvMatrix.RowCount = (int)nudRows.Value;
                         for (int i = 0; i < dgvMatrix.Columns.Count; i++)
                         {
-                            dgvMatrix.Columns[i].Width = 25;
+                            dgvMatrix.Columns[i].Width = 40;
                         }
                         comboBox.SelectedIndex = 0;
                     }
@@ -374,8 +375,8 @@ namespace MatrixOperations
                         dgvMatrix2.RowCount = (int)nudRows2.Value;
                         for (int i = 0; i < dgvMatrix2.Columns.Count; i++)
                         {
-                            dgvMatrix2.Columns[i].Width = 25;
-                            comboBox.SelectedIndex =1;
+                            dgvMatrix2.Columns[i].Width = 40;
+                            comboBox.SelectedIndex = 1;
                         }
                     }
                 }
